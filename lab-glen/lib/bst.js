@@ -1,6 +1,6 @@
 'use strict';
 
-const BST = module.exports = exports = function() {
+const BST = function() {
   this.root = null;
 };
 
@@ -10,7 +10,7 @@ function Node(data) {
   this.right = null;
 }
 
-var bstFromArray = function (nums) {
+function bstFromArray(nums) {
   function recurse(nums, start, end) {
     if(start > end) {
       return null;
@@ -22,7 +22,7 @@ var bstFromArray = function (nums) {
     return root;
   }
   return recurse(nums, 0, nums.length - 1);
-};
+}
 
 BST.prototype.insertNode = function(data) {
 
@@ -92,3 +92,30 @@ BST.prototype.find = function (data) {
   }
   return current;
 };
+
+BST.prototype.print = function() {
+  if(!this.root) {
+    return console.log('No root node found');
+  }
+  var newline = new Node('|');
+  var queue = [this.root, newline];
+  var string = '';
+  while(queue.length) {
+    var node = queue.shift();
+    string += node.data.toString() + ' ';
+    if(node === newline && queue.length) {
+      queue.push(newline);
+    }
+    if(node.left) {
+      queue.push(node.left);
+    }
+    if(node.right) {
+      queue.push(node.right);
+    }
+  }
+  console.log(string.slice(0, -2).trim());
+};
+
+
+module.exports.BST = BST;
+module.exports.bstFromArray = bstFromArray;
