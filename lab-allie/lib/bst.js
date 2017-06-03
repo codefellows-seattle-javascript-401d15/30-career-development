@@ -67,7 +67,14 @@ bstNode.prototype.max = function(node) {
 };
 
 // O(n)
-bstNode.prototype.fromArray = function(array) {};
+bstNode.fromArray = function (node, array){
+  if(!array) return null;
+  
+  for(let i = 0; i < array.length; i++) {
+    node.appendChild(array[i]);
+  }
+  return node;
+};
 
 
 // ** STRETCH GOAL ** //

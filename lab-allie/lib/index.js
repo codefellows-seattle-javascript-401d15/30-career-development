@@ -20,3 +20,8 @@ console.log('max', bst.max(bst));
 //node index.js to run
 
 console.log('bft', bst.breadthFirst());
+
+let arrayNode = new BST(15);
+console.log();
+console.log('from array', BST.fromArray(arrayNode, [1, 5, 8, 3, 9, 2, 4]));
+console.log('bft array node', arrayNode.breadthFirst());
