@@ -8,6 +8,8 @@ const bstNode = module.exports = function(val) {
   this.parent = null;
 };
 
+// let Viz = require('viz.js');
+
 // O(n)
 bstNode.prototype.appendChild = function(val) {
   if(!this) return;
@@ -32,7 +34,7 @@ bstNode.prototype.contains = function(val) {
     if(!this.left) return false;
     else return this.left.contains(val);
   } else if(val > this.val) {
-    if(this.right) return false;
+    if(!this.right) return false;
     else return this.right.contains(val);
   } else return true;
 };
@@ -43,7 +45,7 @@ bstNode.prototype.find = function(val) {
     if(!this.left) return null;
     else return this.left.find(val);
   } else if(val > this.val) {
-    if(this.right) return null;
+    if(!this.right) return null;
     else return this.right.find(val);
   } else return this;
 };
@@ -79,7 +81,7 @@ bstNode.fromArray = function (node, array){
 
 // ** STRETCH GOAL ** //
 // O(n)
-bstNode.prototype.balance = function(array) {};
+// bstNode.prototype.balance = function(array) {};
 
 
 
@@ -134,4 +136,29 @@ bstNode.prototype.inOrder = function(cb) {
     cb(node);
     this.right.inOrder(node);
   }
+};
+
+// bstNode.prototype.getDotInfo = function() {
+//   let result = `diagraph {`;
+//     
+//   this.preOrder(node => {
+//     if(!node) return;
+//     if(node.left) result += `${node.val} -> ${node.left.val}`;
+//     if(node.right) result += `${node.val} -> ${node.right.val}`;
+//   });
+//   return `${result}`;
+// };
+// 
+// bstNode.prototype.treeify = function() {
+//   return Viz(this.getDotInfo());
+// };
+
+
+bstNode.prototype.height = function(node) {
+  if(!node) return 0;
+  
+  let leftHeight = this.height(node.left);
+  let rightHeight = this.height(node.right);
+  
+  return Math.max(leftHeight, rightHeight) + 1;
 };
