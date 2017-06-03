@@ -20,10 +20,16 @@ console.log('max', bst.max(bst));
 
 console.log('bft', bst.breadthFirst());
 
-// let arrayNode = new BST(15);
+let arrayNode = new BST(15);
 // console.log();
-// console.log('from array', BST.fromArray(arrayNode, [1, 5, 8, 3, 9, 2, 4]));
-// console.log('bft array node', arrayNode.breadthFirst());
+console.log('from array', BST.fromArray(arrayNode, [1, 5, 8, 3, 9, 2, 4]));
+console.log('bft array node', arrayNode.breadthFirst());
+// console.log('bft array node', arrayNode.preOrder());
 // // console.log('bst treeify', bst.treeify());
 // console.log('height', bst.height(bst));
 // console.log('height', arrayNode.height(arrayNode));
+
+// console.log(arrayNode.find(1));
+// console.log(arrayNode.find(19));
+// console.log(arrayNode.contains(1));
+// console.log(arrayNode.contains(19));
