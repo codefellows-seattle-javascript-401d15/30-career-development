@@ -208,7 +208,7 @@ describe('Testing binary search tree methods', function() {
     });
     
     it('should be traversed, breadth-first', done => {
-      expect(arrayBST.breadthFirst()).to.equal('51259366495515');
+      expect(arrayBST.breadthFirst()).to.equal('51 25 93 6 64 9 55 15 ');
       done();
     });
   });
@@ -219,7 +219,7 @@ describe('Testing binary search tree methods', function() {
   describe('Testing traversal methods', () => {
     
     it('should be traversed, breadth-first', done => {
-      expect(bst.breadthFirst()).to.equal('50259363364982926355599141532395331216141813');
+      expect(bst.breadthFirst()).to.equal('50 25 93 6 33 64 98 2 9 26 35 55 99 1 4 15 32 39 53 3 12 16 14 18 13 ');
       done();
     });
     

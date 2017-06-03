@@ -95,7 +95,7 @@ bstNode.prototype.breadthFirst = function() {
   
   while(q.length > 0) {
     current = q.pop();
-    result += current.val + '';
+    result += current.val + ' ';
     if(current.left) q.unshift(current.left);
     if(current.right) q.unshift(current.right);
   }
