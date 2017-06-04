@@ -55,7 +55,7 @@ describe('Testing binary search tree methods', function() {
     });
   });
       
-  describe('Testing the contains method', () => {
+  describe('Testing the contains method', function() {
     bst.appendChild(25);
     bst.appendChild(6);
     bst.appendChild(9);
@@ -99,6 +99,11 @@ describe('Testing binary search tree methods', function() {
     
     it('should not contain nodes that were not appended', done => {
       expect(bst.contains(44)).to.be.false;
+      done();
+    });
+    
+    it('should be able to detect the height and determine if the tree is balanced', done => {
+      expect(bst.isBalanced(bst)).to.be.false;
       done();
     });
     
@@ -241,6 +246,21 @@ describe('Testing binary search tree methods', function() {
       expect(arrayBST.breadthFirst()).to.equal('51 25 93 6 64 9 55 15 ');
       done();
     });
+    
+    it('should be able to detect the height and determine if the tree is balanced', done => {
+      expect(arrayBST.isBalanced(arrayBST)).to.be.true;
+      done();
+    });
+    
+    it('should no longer be balanced when additional nodes are added to one side', done => {
+      arrayBST.appendChild(65);
+      arrayBST.appendChild(70);
+      arrayBST.appendChild(75);
+      arrayBST.appendChild(90);
+      expect(arrayBST.isBalanced(arrayBST)).to.be.false;
+      done();
+    });
+    
   });
 
   // describe('Testing the balance method', () => {});

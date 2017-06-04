@@ -6,7 +6,7 @@ A binary search tree is considered to be balanced if the height difference betwe
 Some examples of this project can be displayed by typing `node index.js` in the terminal. The file can be edited and this command can be entered in the terminal again to show different outputs from these methods.
 
 ##### Dependencies
-This project uses mocha and chai as dependencies for testing purposes. The tests can be run in the command line by typing `npm run test`. There are currently 30 passing tests with 73 expect statements.
+This project uses mocha and chai as dependencies for testing purposes. The tests can be run in the command line by typing `npm run test`. There are currently 32 passing tests with 75 expect statements.
 
 ##### Instantiating a new tree
 
@@ -44,7 +44,9 @@ The `contains` prototype method is similar. It also takes in a value and will re
 
 The `min` and `max` prototype methods return the value of the node with either the lowest value or the greatest value, respectively. For example, `bst.min(bst);` returns a value of 12 and `bst.max(bst);` returns a value of 100.
 
-The height of the entire tree can be determined using the recursive `height` prototype method. This method determines how many layers of children exist, including the root. For example, `arrayNode.height(arrayNode);` returns the number 4.
+The height of the entire tree can be determined using the recursive `height` prototype method. This method determines how many layers of children exist, including the root. For example, `arrayNode.height(arrayNode);` returns the number 4. This method can also be used in conjuction with the `find` method to return the height of a specific node in the tree. For example, `arrayNode.height(arrayNode.find(3));` returns the number 2.
+
+The `isBalanced` method is used to determine if a tree is balanced, returning the difference as an absolute value and a Boolean. For example, `arrayNode.isBalanced(arrayNode);` returns a difference of 1 and a Boolean value of `true` because the tree is balanced. If the tree were right-heavy or left-heavy, this method will return the difference and a Boolean value of `false`.
 
 ##### Traversal
 

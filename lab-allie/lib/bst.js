@@ -162,3 +162,21 @@ bstNode.prototype.height = function(node) {
   
   return Math.max(leftHeight, rightHeight) + 1;
 };
+
+
+bstNode.prototype.isBalanced = function(node) {
+  if(!node) return null;
+  
+  let leftHeight = this.height(node.left);
+  let rightHeight = this.height(node.right);
+  
+  let difference = leftHeight - rightHeight;
+  console.log('difference', difference);
+  
+  if(Math.abs(difference) > 1) {
+    return false;
+  } else {
+    return true;
+  }
+
+};
