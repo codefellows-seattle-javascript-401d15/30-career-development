@@ -102,10 +102,10 @@ describe('Testing binary search tree methods', function() {
       done();
     });
     
-    it('should be able to detect the height and determine if the tree is balanced', done => {
-      expect(bst.isBalanced(bst)).to.be.false;
-      done();
-    });
+    // it.only('should be able to detect the height and determine if the tree is balanced', done => {
+    //   expect(bst.isBalanced(bst)).to.be.false;
+    //   done();
+    // });
     
   });
   
@@ -261,10 +261,13 @@ describe('Testing binary search tree methods', function() {
       done();
     });
     
+    it('should rebalance an unbalanced tree', done => {
+      arrayBST.balance(arrayBST);
+      expect(arrayBST.isBalanced(arrayBST)).to.be.true;
+      done();
+    });
+    
   });
-
-  // describe('Testing the balance method', () => {});
-
 
   describe('Testing traversal methods', () => {
     

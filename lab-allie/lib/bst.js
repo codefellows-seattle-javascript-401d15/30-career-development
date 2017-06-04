@@ -1,5 +1,7 @@
 'use strict';
 
+// ** NODE CONSTRUCTOR ** //
+
 const bstNode = module.exports = function(val) {
   this.val = val,
   this.data = null,
@@ -9,6 +11,9 @@ const bstNode = module.exports = function(val) {
 };
 
 // let Viz = require('viz.js');
+
+
+// **   BASIC PROTOTYPE METHODS ** //
 
 // O(log n)
 bstNode.prototype.appendChild = function(val) {
@@ -24,6 +29,12 @@ bstNode.prototype.appendChild = function(val) {
       this.left = new bstNode(val);
       this.left.parent = this;
     } else this.left.appendChild(val);
+  }
+  
+  if (this.isBalanced(this)) {
+    return;
+  } else {
+    this.balance();
   }
   return;
 };
@@ -68,6 +79,16 @@ bstNode.prototype.max = function(node) {
   return node.val;
 };
 
+// O(log n)
+bstNode.prototype.height = function(node) {
+  if(!node) return 0;
+  
+  let leftHeight = this.height(node.left);
+  let rightHeight = this.height(node.right);
+  
+  return Math.max(leftHeight, rightHeight) + 1;
+};
+
 // O(n)
 bstNode.fromArray = function (node, array){
   if(!array) return null;
@@ -80,12 +101,40 @@ bstNode.fromArray = function (node, array){
 
 
 // ** STRETCH GOAL ** //
+
 // O(n)
-// bstNode.prototype.balance = function(array) {};
+bstNode.prototype.isBalanced = function(node) {
+  if(!node) return null;
+  
+  let leftHeight = this.height(node.left);
+  let rightHeight = this.height(node.right);
+  
+  let difference = leftHeight - rightHeight;
+  
+  if(Math.abs(difference) > 1) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+// O(n)
+bstNode.prototype.balance = function(node) {
+  if(!node) return;
+  
+  let nodeRight = node.right;
+  let nodeLeft = node.left;
+  
+  if (node.right === nodeRight) {
+    node.right = nodeLeft;
+  } else if (node.left === nodeLeft) {
+    node.left = nodeRight;
+  }
+  return true;
+};
 
 
-
-
+// ** TRAVERSAL METHODS ** //
 
 // O(n)
 bstNode.prototype.breadthFirst = function() {
@@ -138,6 +187,9 @@ bstNode.prototype.inOrder = function(cb) {
   }
 };
 
+
+// ** TREE VISUALIZATION TOOL ** //
+
 // bstNode.prototype.getDotInfo = function() {
 //   let result = `diagraph {`;
 //     
@@ -152,31 +204,3 @@ bstNode.prototype.inOrder = function(cb) {
 // bstNode.prototype.treeify = function() {
 //   return Viz(this.getDotInfo());
 // };
-
-
-bstNode.prototype.height = function(node) {
-  if(!node) return 0;
-  
-  let leftHeight = this.height(node.left);
-  let rightHeight = this.height(node.right);
-  
-  return Math.max(leftHeight, rightHeight) + 1;
-};
-
-
-bstNode.prototype.isBalanced = function(node) {
-  if(!node) return null;
-  
-  let leftHeight = this.height(node.left);
-  let rightHeight = this.height(node.right);
-  
-  let difference = leftHeight - rightHeight;
-  console.log('difference', difference);
-  
-  if(Math.abs(difference) > 1) {
-    return false;
-  } else {
-    return true;
-  }
-
-};
