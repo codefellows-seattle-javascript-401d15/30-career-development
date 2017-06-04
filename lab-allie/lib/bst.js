@@ -10,7 +10,7 @@ const bstNode = module.exports = function(val) {
 
 // let Viz = require('viz.js');
 
-// O(n)
+// O(log n)
 bstNode.prototype.appendChild = function(val) {
   if(!this) return;
   if (val === this.val) throw new Error('val must be unique');
@@ -28,7 +28,7 @@ bstNode.prototype.appendChild = function(val) {
   return;
 };
 
-// O(n)
+// O(log n)
 bstNode.prototype.contains = function(val) {
   if(val < this.val) {
     if(!this.left) return false;
@@ -39,7 +39,7 @@ bstNode.prototype.contains = function(val) {
   } else return true;
 };
 
-// O(n)
+// O(log n)
 bstNode.prototype.find = function(val) {
   if(val < this.val) {
     if(!this.left) return null;
@@ -50,7 +50,7 @@ bstNode.prototype.find = function(val) {
   } else return this;
 };
 
-// O(n)
+// O(log n)
 bstNode.prototype.min = function(node) {
   if(!node) return null;
   
@@ -59,7 +59,7 @@ bstNode.prototype.min = function(node) {
   return node.val;
 };
 
-// O(n)
+// O(log n)
 bstNode.prototype.max = function(node) {
   if(!node) return null;
   
