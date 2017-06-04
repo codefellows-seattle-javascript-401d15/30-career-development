@@ -72,13 +72,28 @@ describe('Testing binary search tree methods', function() {
     });
     
     it('should contain the nodes that were appended', done => {
+      expect(bst.val).to.equal(50);
+      
       expect(bst.contains(25)).to.be.true;
+      expect(bst.left.val).to.equal(25);
+    
       expect(bst.contains(6)).to.be.true;
+      expect(bst.left.left.val).to.equal(6);
+    
       expect(bst.contains(9)).to.be.true;
+      expect(bst.left.left.right.val).to.equal(9);
+    
       expect(bst.contains(15)).to.be.true;
+      expect(bst.left.left.right.right.val).to.equal(15);
+    
       expect(bst.contains(93)).to.be.true;
+      expect(bst.right.val).to.equal(93);
+    
       expect(bst.contains(64)).to.be.true;
+      expect(bst.right.left.val).to.equal(64);
+
       expect(bst.contains(55)).to.be.true;
+      expect(bst.right.left.left.val).to.equal(55);
       done();
     });
     
@@ -175,13 +190,28 @@ describe('Testing binary search tree methods', function() {
     
     it('should contain the nodes that were in the array', done => {
       expect(arrayBST.contains(51)).to.be.true;
+      expect(arrayBST.val).to.equal(51);
+      
       expect(arrayBST.contains(25)).to.be.true;
+      expect(arrayBST.left.val).to.equal(25);
+      
       expect(arrayBST.contains(6)).to.be.true;
+      expect(arrayBST.left.left.val).to.equal(6);
+
       expect(arrayBST.contains(9)).to.be.true;
+      expect(arrayBST.left.left.right.val).to.equal(9);
+
       expect(arrayBST.contains(15)).to.be.true;
+      expect(arrayBST.left.left.right.right.val).to.equal(15);
+      
       expect(arrayBST.contains(93)).to.be.true;
+      expect(arrayBST.right.val).to.equal(93);
+
       expect(arrayBST.contains(64)).to.be.true;
+      expect(arrayBST.right.left.val).to.equal(64);
+
       expect(arrayBST.contains(55)).to.be.true;
+      expect(arrayBST.right.left.left.val).to.equal(55);
       done();
     });
     
