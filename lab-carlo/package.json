@@ -1,0 +1,19 @@
+{
+  "name": "lab-carlo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlo",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "viz.js": "^1.8.0"
+  },
+  "devDependencies": {
+    "chai": "^4.0.1",
+    "mocha": "^3.4.2"
+  }
+}
