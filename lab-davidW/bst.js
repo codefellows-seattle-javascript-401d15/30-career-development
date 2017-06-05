@@ -13,8 +13,8 @@ BstNode.fromArray = function(node, array) {
   if(!array) return null;
 
   for(let i = 1; i < array.length; i++) {
-    let bst = new BstNode(array[0])
-    node.appendChild(array[i]);
+    let bst = new BstNode(array[0]);
+    node.insert(array[i]);
     return
   }
 };
