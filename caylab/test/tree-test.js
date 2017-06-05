@@ -57,33 +57,33 @@ describe('Testing binary search tree methods', function(){
   })
   describe('Testing the lookup node method', () => {
     it('should say that it can\'t find the value', done => {
-      expect(bst.lookup(1000)).to.not.have.valueOf(1000)
+      expect(bst.lookup(1000)).to.not.be.false
       done()
     })
     it('should return the sought after value', done => {
-      expect(bst.lookup(30)).to.have.valueOf(30)
+      expect(bst.lookup(10)).to.be.true
       done()
     })
   })
   describe('Testing the min node method', () => {
     it('should say that the minimum value node is 10', done => {
-      expect(bst.min(bst)).to.have.valueOf(10)
+      expect(bst.min(bst)).to.equal(10)
       done()
     })
     it('should return a new min of 2', done => {
       bst.insert(2)
-      expect(bst.min(bst)).to.have.valueOf('2')
+      expect(bst.min(bst)).to.equal(2)
       done()
     })
   })
   describe('Testing the max node method', () => {
     it('should return a maximum value of 70', done => {
-      expect(bst.max(bst)).to.have.valueOf('70')
+      expect(bst.max(bst)).to.equal(70)
       done()
     })
     it('should have a new maximum value of 71', done => {
       bst.insert(71)
-      expect(bst.max(bst)).to.have.valueOf(71)
+      expect(bst.max(bst)).to.equal(71)
       done()
     })
   })
