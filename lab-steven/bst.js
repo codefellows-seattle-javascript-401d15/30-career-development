@@ -1,18 +1,21 @@
 'use strict';
 
-const bstNode = module.exports = function(val){
+//O(1)
+const BstNode = module.exports = function(val){
   this.val = val;
   this.parent = null;
   this.left = null;
   this.right = null;
-}
+  //O(n log n)
+  this.fromArray = function(array){
+    array.forEach(item => this.appendChild(item));
+    return this;
+  };
+};
 
-bstNode.fromArray = function(array){
-  array.forEach(val => bstNode.appendChild(val));
-}
-
-bstNode.prototype.min = function(){
-  return _goLeft(this)
+//O(log n)
+BstNode.prototype.min = function(){
+  return _goLeft(this);
 
   function _goLeft(node){
     if (node.left) return _goLeft(node.left);
@@ -20,30 +23,32 @@ bstNode.prototype.min = function(){
   }
 };
 
-bstNode.prototype.max = function(){
-  return _goRight(this)
+//O(log n)
+BstNode.prototype.max = function(){
+  return _goRight(this);
 
   function _goRight(node){
     if (node.right) return _goRight(node.right);
     return node.val;
   }
-}
+};
 
-bstNode.prototype.appendChild = function(val){
+//O(log n)
+BstNode.prototype.appendChild = function(val){
   if(!this) return;
 
   if(val === this.val) throw new Error('val must be unique');
 
   if(val > this.val) {
     if(!this.right) {
-      this.right = new bstNode(val);
+      this.right = new BstNode(val);
       this.right.parent = this;
     } else {
       this.right.appendChild(val);
     }
   } else if (val < this.val) {
     if(!this.left) {
-      this.left = new bstNode(val);
+      this.left = new BstNode(val);
       this.left.parent = this;
     } else {
       this.left.appendChild(val);
@@ -52,11 +57,12 @@ bstNode.prototype.appendChild = function(val){
   return;
 };
 
-bstNode.prototype.delete = function(){
+// BstNode.prototype.delete = function(){
+//
+// };
 
-};
-
-bstNode.prototype.contains = function(val){
+//O(log n)
+BstNode.prototype.contains = function(val){
   if(val < this.val) {
     if(!this.left) return false;
     else return this.left.contains(val);
@@ -66,7 +72,8 @@ bstNode.prototype.contains = function(val){
   } else return true;
 };
 
-bstNode.prototype.find = function(val){
+//O(log n)
+BstNode.prototype.find = function(val){
   if(val < this.val) {
     if(!this.left) return null;
     else return this.left.find(val);
@@ -76,7 +83,8 @@ bstNode.prototype.find = function(val){
   } else return this;
 };
 
-bstNode.prototype.breadthFirst = function(){
+//O(n)
+BstNode.prototype.breadthFirst = function(){
   let q = [this];
   let result = '';
   let current;
@@ -91,7 +99,8 @@ bstNode.prototype.breadthFirst = function(){
   return result;
 };
 
-bstNode.prototype.preOrder = function(cb){
+//O(n)
+BstNode.prototype.preOrder = function(cb){
   _walk(this);
 
   function _walk(node, cb) {
@@ -102,7 +111,8 @@ bstNode.prototype.preOrder = function(cb){
   }
 };
 
-bstNode.prototype.postOrder = function(cb){
+//O(n)
+BstNode.prototype.postOrder = function(cb){
   _walk(this);
 
   function _walk(node, cb) {
@@ -114,7 +124,8 @@ bstNode.prototype.postOrder = function(cb){
 
 };
 
-bstNode.prototype.inOrder = function(cb){
+//O(n)
+BstNode.prototype.inOrder = function(cb){
   _walk(this);
 
   function _walk(node, cb) {
@@ -125,19 +136,3 @@ bstNode.prototype.inOrder = function(cb){
   }
 
 };
-
-// bstNode.prototype.getDotInfo = function() {
-//   let result = `digraph { `
-//
-//   this.preOrder(node => {
-//     if(!node) return
-//     if(node.left) result += `${node.val} -> ${node.left.val} `
-//     if(node.right) result += `${node.val} -> ${node.right.val} `
-//   })
-//
-//   return `${result};}`
-// }
-//
-// bstNode.prototype.treeify = function() {
-//   return Viz(this.getDotInfo())
-// }
