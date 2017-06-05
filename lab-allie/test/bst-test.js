@@ -229,11 +229,13 @@ describe('Testing binary search tree methods', function() {
     
     it('should return the correct minimum value', done => {
       expect(arrayBST.min(arrayBST)).to.equal(6);
+      expect(arrayBST.min(arrayBST)).to.not.equal(36);
       done();
     });
 
     it('should return the correct maximum value', done => {
       expect(arrayBST.max(arrayBST)).to.equal(93);
+      expect(arrayBST.max(arrayBST)).to.not.equal(9);
       done();
     });
     
