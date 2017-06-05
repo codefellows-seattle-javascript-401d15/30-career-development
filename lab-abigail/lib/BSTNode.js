@@ -1,15 +1,4 @@
-'use strict'
-
-let BST = require('./bst');
-let Promise = require('bluebird');
-let fs = Promise.promisifyAll(require('fs'), {suffix: 'Prom'});
-let bst;
-
-let array = [...Array(100).keys()]
-arr.sort(() => .5 - Math.random()).forEach((n, i) => {
-  if(i === 0) bst = new BST(n)
-  else bst.insert(n)
-});
+'use strict';
 
 const BstNode = module.exports = function(val) {
   this.val = val;
@@ -17,16 +6,17 @@ const BstNode = module.exports = function(val) {
   this.parent = null;
   this.left = null;
   this.right = null;
-}
+};
 
+// O(n2)
 BstNode.prototype.appendChild = function(val) {
-  if(!this) return
-  if(val === this.val) throw new Error('val must be unique')
+  if(!this) return;
+  if(val === this.val) throw new Error('val must be unique');
   if(val > this.val) {
     if(!this.right) {
       this.right = new BstNode(val);
       this.right.parent = this;
-    } else this.right.appendChild(val)
+    } else this.right.appendChild(val);
   } else if(val < this.val) {
     if(!this.left) {
       this.left = new BstNode(val);
@@ -34,8 +24,9 @@ BstNode.prototype.appendChild = function(val) {
     } else this.left.appendChild(val);
   }
   return;
-}
+};
 
+// O(n)
 BstNode.fromArray = function(node, array) {
   for (let i = 0; i < array.length; i++) {
     BstNode.appendChild(array[i]);
@@ -43,6 +34,7 @@ BstNode.fromArray = function(node, array) {
   return node;
 };
 
+// O(n) ??
 BstNode.prototype.min = function(bst) {
   if(!bst) return new Error('no val');
   if(this.left) {
@@ -51,6 +43,7 @@ BstNode.prototype.min = function(bst) {
   return bst;
 };
 
+// O(n)
 BstNode.prototype.max = function(bst) {
   if(!bst) return new Error('no val');
   if(this.right) {
@@ -59,6 +52,7 @@ BstNode.prototype.max = function(bst) {
   return bst;
 };
 
+// O(n) or O(n2)..? TODO
 BstNode.prototype.find = function(val) {
   if(val < this.val) {
     if(!this.left) return null;
@@ -67,4 +61,4 @@ BstNode.prototype.find = function(val) {
     if(!this.right) return null;
     else return this.right.find(val);
   } else return this;
-}
+};
