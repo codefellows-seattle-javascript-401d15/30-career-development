@@ -93,6 +93,46 @@ BST.prototype.find = function (data) {
   return current;
 };
 
+BST.prototype.maxDepth = function(root) {
+  return find(root);
+
+  function find(node) {
+    if(node === null) {
+      return 0;
+    }
+    let maxLeft = 1;
+    let maxRight = 1;
+
+    if(node.left !== null) {
+      maxLeft += find(node.left);
+    }
+    if(node.right !== null) {
+      maxRight += find(node.right);
+    }
+    return maxLeft > maxRight ? maxLeft : maxRight;
+  }
+};
+
+BST.prototype.maxDepth = function(root) {
+  return find(root);
+
+  function find(node) {
+    if(node === null) {
+      return 0;
+    }
+    let maxLeft = 1;
+    let maxRight = 1;
+
+    if(node.left !== null) {
+      maxLeft += find(node.left);
+    }
+    if(node.right !== null) {
+      maxRight += find(node.right);
+    }
+    return maxLeft > maxRight ? maxLeft : maxRight;
+  }
+};
+
 BST.prototype.print = function() {
   if(!this.root) {
     return console.log('No root node found');
@@ -115,7 +155,6 @@ BST.prototype.print = function() {
   }
   console.log(string.slice(0, -2).trim());
 };
-
 
 module.exports.BST = BST;
 module.exports.bstFromArray = bstFromArray;
