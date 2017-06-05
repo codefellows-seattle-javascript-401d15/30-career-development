@@ -1,0 +1,26 @@
+{
+  "name": "30-career-development",
+  "version": "1.0.0",
+  "description": "lab-30-lindsay",
+  "main": "binarysearchtree.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lindsgil/30-career-development.git"
+  },
+  "keywords": [
+    "lab-30-lindsay"
+  ],
+  "author": "lindsay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lindsgil/30-career-development/issues"
+  },
+  "homepage": "https://github.com/lindsgil/30-career-development#readme",
+  "devDependencies": {
+    "chai": "^4.0.1",
+    "mocha": "^3.4.2"
+  }
+}
