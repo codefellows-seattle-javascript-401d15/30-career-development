@@ -1,0 +1,16 @@
+{
+  "name": "lab-brianna",
+  "version": "1.0.0",
+  "description": "This is a lab assignment for Code Fellow's Full-Stack JS course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.0.1",
+    "mocha": "^3.4.2"
+  }
+}
