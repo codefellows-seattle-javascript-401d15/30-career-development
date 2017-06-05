@@ -1,0 +1,16 @@
+'use strict'
+let myArray = [1,3,5,7,9]
+let BST = require('./bst.js')
+let bst = new BST(5)
+bst.insert(2)
+bst.insert(8)
+bst.insert(100)
+bst.insert(6)
+bst.insert(1)
+bst.insert(40)
+bst.insert(70)
+bst.insert(55)
+console.log(bst)
+console.log('min', bst.min(bst))
+console.log('max', bst.max(bst))
+console.log('new bstarray', BST.fromArray(myArray))
