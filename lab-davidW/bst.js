@@ -2,7 +2,7 @@
 
 let Viz = require('viz.js');
 
-const bstNode = module.exports = function(val) {
+const BstNode = module.exports = function(val) {
   this.val = val;
   this.data = null;
   this.parent = null;
@@ -11,45 +11,36 @@ const bstNode = module.exports = function(val) {
 };
 
 //O(n log n)
-bstNode.fromArray = function(node, array) {
+BstNode.fromArray = function(node, array) {
   if(!array) return null;
 
   for(let i = 0; i < array.length; i++) {
     node.appendChild(array[i]);
+    return
   }
 };
 
 //O(n)
-bstNode.prototype.insert = function(val) {
+BstNode.prototype.insert = function(val) {
   if(!this) return;
   if(val === this.val) throw new Error('val must be unique');
   // could also call .contains() or lookup() to validate unique value
   if(val > this.val) {
     if(!this.right) {
-      this.right = new bstNode(val);
+      this.right = new BstNode(val);
       this.right.parent = this;
     } else this.right.insert(val);
   } else if(val < this.val) {
     if(!this.left) {
-      this.left = new bstNode(val);
+      this.left = new BstNode(val);
       this.left.parent = this;
     } else this.left.insert(val);
   }
   return;
 };
 
-bstNode.prototype.delete = function() {
-  // find the node you want
-  // check to see if there are no children
-    // defreference that node
-  // check to see if there is one child
-    // set that child as the successor to the node you're removing
-    // defreference that node
-  // check to see if there are two children
-    // nuke it with fire!! (reference the wiki pseudo code)
-};
-
-bstNode.prototype.contains = function(val) {
+//O(log n)
+BstNode.prototype.contains = function(val) {
   if(val < this.val) {
     if(!this.left) return false;
     else return this.left.contains(val);
@@ -61,7 +52,7 @@ bstNode.prototype.contains = function(val) {
 
 //this is find
 //O(n)
-bstNode.prototype.lookup = function(val) {
+BstNode.prototype.lookup = function(val) {
   if(val < this.val) {
     if(!this.left) return null;
     else return this.left.lookup(val);
@@ -71,7 +62,8 @@ bstNode.prototype.lookup = function(val) {
   } else return this;
 };
 
-bstNode.prototype.breadthFirst = function() {
+//O(log n)
+BstNode.prototype.breadthFirst = function() {
   let q = [this];
   let result = '';
   let current;
@@ -86,7 +78,7 @@ bstNode.prototype.breadthFirst = function() {
   return result;
 };
 
-bstNode.prototype.preOrder = function(cb) {
+BstNode.prototype.preOrder = function(cb) {
   _walk(this);
   function _walk(node) {
     cb(node);
@@ -95,7 +87,7 @@ bstNode.prototype.preOrder = function(cb) {
   }
 };
 
-bstNode.prototype.postOrder = function(cb) {
+BstNode.prototype.postOrder = function(cb) {
   _walk(this);
   function _walk(node) {
     if(node.left) _walk(node.left);
@@ -104,7 +96,7 @@ bstNode.prototype.postOrder = function(cb) {
   }
 };
 
-bstNode.prototype.inOrder = function(cb) {
+BstNode.prototype.inOrder = function(cb) {
   _walk(this);
   function _walk(node) {
     if(node.left) _walk(node.left);
@@ -113,7 +105,7 @@ bstNode.prototype.inOrder = function(cb) {
   }
 };
 
-bstNode.prototype.getDotInfo = function() {
+BstNode.prototype.getDotInfo = function() {
   let result = `digraph { `;
 
   this.preOrder(node => {
@@ -125,6 +117,6 @@ bstNode.prototype.getDotInfo = function() {
   return `${result};}`;
 };
 
-bstNode.prototype.treeify = function() {
+BstNode.prototype.treeify = function() {
   return Viz(this.getDotInfo());
 };
