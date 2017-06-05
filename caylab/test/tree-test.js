@@ -3,7 +3,7 @@
 const expect = require('chai').expect
 const BST = require('../bst.js')
 let bst = new BST(30)
-
+let testArray = [1, 8, 100, 110]
 describe('Testing binary search tree methods', function(){
   describe('Creating a tree', () => {
     it('should make a new tree', done =>{
@@ -67,7 +67,7 @@ describe('Testing binary search tree methods', function(){
   })
   describe('Testing the min node method', () => {
     it('should say that the minimum value node is 10', done => {
-      expect(bst.min(bst)).to.have.valueOf('10')
+      expect(bst.min(bst)).to.have.valueOf(10)
       done()
     })
     it('should return a new min of 2', done => {
@@ -83,12 +83,17 @@ describe('Testing binary search tree methods', function(){
     })
     it('should have a new maximum value of 71', done => {
       bst.insert(71)
-      expect(bst.max(bst)).to.have.valueOf('71')
+      expect(bst.max(bst)).to.have.valueOf(71)
       done()
     })
   })
-  describe('Testing the fromArray node method', () => {
-    
+  describe('Testing the fromArray node method', function(){
+    it('new additions to be appended, and the new max to be 110', done => {
+      let testArray = [1, 8, 100, 110]
+      let newTestBST = BST.fromArray(testArray)
+      expect(newTestBST.contains(110)).to.be.true
+      done()
+    })
   })
   describe('Testing the traversal node method', function(){})
   describe('Testing the depth node method', () => {})

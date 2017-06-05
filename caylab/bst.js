@@ -89,25 +89,29 @@ bstNode.prototype.inOrder = function(callback){
 }
 
 bstNode.prototype.min = function(node){
-  let minValue
+  let minValue = node.value
   if(!node){
     node = this.root
   }
   while(node.left){
     node = node.left
-    minValue = node.value
+    if(node.value < minValue){
+      minValue = node.value
+    }
   }
   return minValue
 }
 
 bstNode.prototype.max = function(node){
-  let maxValue
+  let maxValue = node.value
   if(!node){
     node = this.root
   }
   while(node.right){
     node = node.right
-    maxValue = node.value
+    if(node.value > maxValue){
+      maxValue = node.value
+    }
   }
   return maxValue
 }
