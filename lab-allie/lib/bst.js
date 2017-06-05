@@ -10,7 +10,7 @@ const bstNode = module.exports = function(val) {
   this.parent = null;
 };
 
-// let Viz = require('viz.js');
+let Viz = require('viz.js');
 
 
 // **   BASIC PROTOTYPE METHODS ** //
@@ -85,7 +85,7 @@ bstNode.prototype.height = function(node) {
   
   let leftHeight = this.height(node.left);
   let rightHeight = this.height(node.right);
-  
+
   return Math.max(leftHeight, rightHeight) + 1;
 };
 
@@ -158,8 +158,8 @@ bstNode.prototype.preOrder = function(cb) {
   function _walk(node) {
     if(!node) return;
     cb(node);
-    this.left.preOrder(node);
-    this.right.preOrder(node);
+    if(node.left) _walk(node.left);
+    if(node.right) _walk(node.right);
   }
 };
 
@@ -169,8 +169,8 @@ bstNode.prototype.postOrder = function(cb) {
   
   function _walk(node) {
     if(!node) return;
-    this.left.postOrder(node);
-    this.right.postOrder(node);
+    if(node.left) _walk(node.left);
+    if(node.right) _walk(node.right);
     cb(node);
   }
 };
@@ -181,26 +181,27 @@ bstNode.prototype.inOrder = function(cb) {
   
   function _walk(node) {
     if(!node) return;
-    this.left.inOrder(node);
+    if(node.left) _walk(node.left);
     cb(node);
-    this.right.inOrder(node);
+    if(node.right) _walk(node.right);
   }
 };
 
 
 // ** TREE VISUALIZATION TOOL ** //
 
-// bstNode.prototype.getDotInfo = function() {
-//   let result = `diagraph {`;
-//     
-//   this.preOrder(node => {
-//     if(!node) return;
-//     if(node.left) result += `${node.val} -> ${node.left.val}`;
-//     if(node.right) result += `${node.val} -> ${node.right.val}`;
-//   });
-//   return `${result}`;
-// };
-// 
-// bstNode.prototype.treeify = function() {
-//   return Viz(this.getDotInfo());
-// };
+bstNode.prototype.getDotInfo = function() {
+  let result = `digraph { `;
+
+  this.preOrder(node => {
+    if(!node) return;
+    if(node.left) result += `${node.val} -> ${node.left.val} `;
+    if(node.right) result += `${node.val} -> ${node.right.val} `;
+  });
+
+  return `${result};}`;
+};
+
+bstNode.prototype.treeify = function() {
+  return Viz(this.getDotInfo());
+};

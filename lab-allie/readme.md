@@ -6,10 +6,9 @@ A binary search tree is considered to be balanced if the height difference betwe
 Some examples of this project can be displayed by typing `node index.js` in the terminal. There are many commands that are currently commented out, so the file can be edited and this command can be entered in the terminal again to show different outputs from these methods.
 
 ##### Dependencies
-This project uses mocha and chai as dependencies for testing purposes. The tests can be run in the command line by typing `npm run test`. There are currently 33 passing tests with 77 expect statements.
+This project uses mocha and chai as dependencies for testing purposes. The tests can be run in the command line by typing `npm run test`. There are currently 30 passing tests with 77 expect statements.
 
 ##### Instantiating a new tree
-
 The tree constructor instantiates a new node with a value that will become the value of the root of the tree. 
 
 ```

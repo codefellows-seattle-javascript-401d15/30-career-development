@@ -72,6 +72,7 @@ describe('Testing binary search tree methods', function() {
     });
     
     it('should contain the nodes that were appended', done => {
+      expect(bst.contains(50)).to.be.true;
       expect(bst.val).to.equal(50);
       
       expect(bst.contains(25)).to.be.true;
@@ -101,12 +102,6 @@ describe('Testing binary search tree methods', function() {
       expect(bst.contains(44)).to.be.false;
       done();
     });
-    
-    // it.only('should be able to detect the height and determine if the tree is balanced', done => {
-    //   expect(bst.isBalanced(bst)).to.be.false;
-    //   done();
-    // });
-    
   });
   
   describe('Testing the find method', () => {
@@ -269,25 +264,10 @@ describe('Testing binary search tree methods', function() {
     
   });
 
-  describe('Testing traversal methods', () => {
+  describe('Testing traversal methods', function() {
     
     it('should be traversed, breadth-first', done => {
       expect(bst.breadthFirst()).to.equal('50 25 93 6 33 64 98 2 9 26 35 55 99 1 4 15 32 39 53 3 12 16 14 18 13 ');
-      done();
-    });
-    
-    it('should be traversed, depth-first, pre-order', done => {
-      
-      done();
-    });
-    
-    it('should be traversed, depth-first, post-order', done => {
-      
-      done();
-    });
-    
-    it('should be traversed, depth-first, in order', done => {
-      
       done();
     });
   });
