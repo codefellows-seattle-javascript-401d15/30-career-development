@@ -1,0 +1,20 @@
+{
+  "name": "30-career-development",
+  "version": "1.0.0",
+  "description": "![cf](http://i.imgur.com/7v5ASc8.png) lab 30 - Binary Search Tree Data Structures\r ====",
+  "main": "bst.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renegadellama/30-career-development.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renegadellama/30-career-development/issues"
+  },
+  "homepage": "https://github.com/renegadellama/30-career-development#readme"
+}
