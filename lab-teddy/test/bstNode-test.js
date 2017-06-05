@@ -47,5 +47,8 @@ describe('bstNode', function(){
     it('should find the node', () => {
       expect(bst.find(30).val).to.equal(30);
     });
+    it('should return an object', () => {
+      expect(bst.find(30)).to.be.an('object');
+    });
   });
 });
