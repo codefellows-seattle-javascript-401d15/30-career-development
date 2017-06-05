@@ -43,31 +43,28 @@ BstNode.fromArray = function(node, array) {
   return node;
 };
 
-BstNode.prototype.min = function(node) {
-  if(!node) return new Error('no val');
+BstNode.prototype.min = function(bst) {
+  if(!bst) return new Error('no val');
   if(this.left) {
     return this.left.min();
   }
-  return this.val;
+  return bst;
 };
 
-BstNode.prototype.max = function(node) {
-  if(!node) return new Error('no val');
+BstNode.prototype.max = function(bst) {
+  if(!bst) return new Error('no val');
   if(this.right) {
-    return this.right.min();
+    return this.right.max();
   }
-  return this.val;
+  return bst;
 };
 
 BstNode.prototype.find = function(val) {
-  if(!val) return new Error('no val');
-  if(this.val === val) return this;
-  if(this.val > val) {
-    if(!this.left) return new Error('no val');
-    return this.left.find(val);
-  }
-  if(this.val < val) {
-    if(!this.right) return new Error('no val');
-    return this.right.find(val);
-  }
-};
+  if(val < this.val) {
+    if(!this.left) return null;
+    else return this.left.find(val);
+  } else if(val > this.val) {
+    if(!this.right) return null;
+    else return this.right.find(val);
+  } else return this;
+}
