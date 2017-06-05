@@ -13,6 +13,8 @@ Prototypes:
   * `find()`: returns the node that contains the value, null otherwise
 
 ## Install and Use Data Structure
+In terminal tab, enter:
+1. `npm install` to install application resources.
 
 ## Access Methods
 
