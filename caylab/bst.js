@@ -39,7 +39,7 @@ bstNode.prototype.contains = function(val){
   if(val < this.value){
     if(!this.left) return false
     else return this.left.contains(val)
-  }else if(val > this.val){
+  }else if(val > this.value){
     if(!this.right) return false
     else return this.right.contains(val)
   }else return true
@@ -120,10 +120,14 @@ bstNode.fromArray = function(array, parentNode){
   for(let i = 1; i < array.length; i++) {
     parentNode.insert(array[i])
   }
-  // if(parentNode){
-  //   for(let i = 0; i < array.length; i++) {
-  //     parentNode.insert(array[i])
-  //   }
-  // }
   return parentNode
+}
+
+bstNode.prototype.depth = function(node){
+  if(!node) return 0;
+
+  let leftDepth = this.depth(node.left)
+  let rightDepth = this.depth(node.right)
+
+  return Math.max(leftDepth, rightDepth) + 1
 }

@@ -7,8 +7,13 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "aesthetiques",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "chai": "^4.0.1",
+    "mocha": "^3.4.2"
+  }
 }
