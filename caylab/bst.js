@@ -112,13 +112,18 @@ bstNode.prototype.max = function(node){
   return maxValue
 }
 
-bstNode.fromArray = function(array, node){
+bstNode.fromArray = function(array, parentNode){
   if(!array) return new Error('Enter an array to use, genius')
-  if(!node){
-    node = new bstNode(array[1])
+  if(!parentNode){
+    parentNode = new bstNode(array[0])
   }
   for(let i = 1; i < array.length; i++) {
-    node.insert(array[i])
+    parentNode.insert(array[i])
   }
-  return
+  // if(parentNode){
+  //   for(let i = 0; i < array.length; i++) {
+  //     parentNode.insert(array[i])
+  //   }
+  // }
+  return parentNode
 }

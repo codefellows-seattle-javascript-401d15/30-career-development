@@ -1,5 +1,5 @@
 'use strict'
-let myArray = [1,3,5,7,9]
+let myArray = [3, 4, 7, 9, 10]
 let BST = require('./bst.js')
 let bst = new BST(5)
 bst.insert(2)
