@@ -10,6 +10,11 @@ For this lab we implemented a Binary Search Tree (BST) Node constructor and the 
 ## Version
 * 0.1.0
 
+## Big O Notation
+Time Complexity
+* Average O(log n)
+* Worst Case O(n)
+
 ## Installation
 Please visit the following pages for how to install your project locally.
 
@@ -34,13 +39,16 @@ npm init
 npm i -S
 ```
 ```
-npm i -D
+npm i -D webpack-dev-server angular-mocks jasmine jasmine-core karma karma-chrome-launcher karma-jasmine karma-mocha-reporter karma-webpack webpack-dev-server
 ```
 
 Add the following to package.json:
 ```
 "scripts": {
-
+  "test": "karma start --single-run",
+  "test-watch": "karma",
+  "build": "webpack",
+  "build-watch": "webpack-dev-server --inline --hot"
 }
 ```
 
@@ -52,7 +60,15 @@ The result of installation above.
 
 },
 "devDependencies": {
-
+  "angular-mocks": "^1.6.4",
+  "jasmine": "^2.6.0",
+  "jasmine-core": "^2.6.2",
+  "karma": "^1.7.0",
+  "karma-chrome-launcher": "^2.1.1",
+  "karma-jasmine": "^1.1.0",
+  "karma-mocha-reporter": "^2.2.3",
+  "karma-webpack": "^2.0.3",
+  "webpack-dev-server": "^2.4.5"
 }
 ```
 
@@ -114,7 +130,7 @@ config.set({
 In [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) (Terminal) enter the command:
 
 In Terminal enter `npm run test`
-Result: "karma start --single-run", "Connected on socket", "✔ 0 tests completed"
+Result: "karma start --single-run", "Connected on socket"
 
 In Terminal enter `npm run build-watch`
 Result: "Project is running at http://localhost:8080/", "webpack: Compiled successfully."
