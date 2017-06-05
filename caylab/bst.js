@@ -116,9 +116,13 @@ bstNode.fromArray = function(array, parentNode){
   if(!array) return new Error('Enter an array to use, genius')
   if(!parentNode){
     parentNode = new bstNode(array[0])
-  }
-  for(let i = 1; i < array.length; i++) {
-    parentNode.insert(array[i])
+    for(let i = 1; i < array.length; i++) {
+      parentNode.insert(array[i])
+    }
+  }else if(parentNode){
+    for(let i = 0; i < array.length; i++) {
+      parentNode.insert(array[i])
+    }
   }
   return parentNode
 }
