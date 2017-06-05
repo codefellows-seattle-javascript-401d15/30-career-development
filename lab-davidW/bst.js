@@ -1,7 +1,5 @@
 'use strict';
 
-let Viz = require('viz.js');
-
 const BstNode = module.exports = function(val) {
   this.val = val;
   this.data = null;
@@ -10,21 +8,39 @@ const BstNode = module.exports = function(val) {
   this.right = null;
 };
 
-//O(n log n)
+//O(n^2)
 BstNode.fromArray = function(node, array) {
   if(!array) return null;
 
-  for(let i = 0; i < array.length; i++) {
+  for(let i = 1; i < array.length; i++) {
+    let bst = new BstNode(array[0])
     node.appendChild(array[i]);
     return
   }
 };
 
 //O(n)
+BstNode.prototype.min = function() {
+  if(!this) return;
+  if(this.left) {
+    return this.left.min()
+  }
+  return this.val;
+}
+
+//O(n)
+BstNode.prototype.max = function() {
+  if(!this) return;
+  if(this.right) {
+    return this.right.max()
+  }
+  return this.val;
+}
+
+//O(n)
 BstNode.prototype.insert = function(val) {
   if(!this) return;
   if(val === this.val) throw new Error('val must be unique');
-  // could also call .contains() or lookup() to validate unique value
   if(val > this.val) {
     if(!this.right) {
       this.right = new BstNode(val);

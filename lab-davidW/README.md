@@ -1,5 +1,11 @@
 # Lab 30 - Binary Search Tree
 
-## Usage
+## Goal
+- Make a binary search tree and algorithms
 
-I am unclear on usage here
+## Usage:
+` $ npm run test`
+
+## Dependencies:
+- Chai
+- Mocha
