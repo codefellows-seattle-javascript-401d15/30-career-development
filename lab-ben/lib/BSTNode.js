@@ -7,6 +7,7 @@ const BstNode = module.exports = function(val) {
   this.parent = null;
 };
 
+// O(n)
 BstNode.prototype.insert = function(val) {
   if(!this) return;
   if(val === this.val) return new Error('val must be unique');
@@ -24,10 +25,12 @@ BstNode.prototype.insert = function(val) {
   return;
 };
 
+// O(n^2)
 BstNode.prototype.fromArray = function(array) {
   array.forEach(item => this.insert(item));
 };
 
+// O(n)
 BstNode.prototype.min = function() {
   if(!this) return;
   if(this.left) {
@@ -36,6 +39,7 @@ BstNode.prototype.min = function() {
   return this.val;
 };
 
+//O(n)
 BstNode.prototype.max = function() {
   if(!this) return;
   if(this.right) {
@@ -44,6 +48,7 @@ BstNode.prototype.max = function() {
   return this.val;
 };
 
+// O(n)
 BstNode.prototype.find = function(val) {
   if(!val) return new Error('Please enter a value');
   if(this.val === val) return this;
