@@ -27,32 +27,20 @@ BstNode.prototype.appendChild = function(val) {
 };
 
 // O(n)
-BstNode.fromArray = function(node, array) {
-  for (let i = 0; i < array.length; i++) {
-    BstNode.appendChild(array[i]);
-  }
-  return node;
-};
-
-// O(n) ??
 BstNode.prototype.min = function(bst) {
-  if(!bst) return new Error('no val');
-  if(this.left) {
-    return this.left.min();
-  }
-  return bst;
+  if(!this) return new Error('no val');
+  if(bst.left) return this.min(bst.left);
+  return bst.val;
 };
 
 // O(n)
 BstNode.prototype.max = function(bst) {
   if(!bst) return new Error('no val');
-  if(this.right) {
-    return this.right.max();
-  }
-  return bst;
+  if(bst.right) return this.max(bst.right);
+  return bst.val;
 };
 
-// O(n) or O(n2)..? TODO
+// O(logn)
 BstNode.prototype.find = function(val) {
   if(val < this.val) {
     if(!this.left) return null;
@@ -61,4 +49,14 @@ BstNode.prototype.find = function(val) {
     if(!this.right) return null;
     else return this.right.find(val);
   } else return this;
+};
+
+
+BstNode.fromArray = function (node, array){
+  if(!array) return null;
+
+  for(let i = 0; i < array.length; i++) {
+    node.appendChild(array[i]);
+  }
+  return node;
 };
