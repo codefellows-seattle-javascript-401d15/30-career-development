@@ -1,11 +1,11 @@
 'use strict';
 
 const expect = require('chai').expect;
-const bstNode = require('../lib/bstNode.js');
+const BstNode = require('../lib/bstNode.js');
 
 describe('bstNode', function(){
   describe('#insert', function(){
-    let bst = new bstNode(6);
+    let bst = new BstNode(6);
     bst.insert(1);
     bst.insert(2);
     bst.insert(3);
@@ -20,30 +20,31 @@ describe('bstNode', function(){
     });
   });
   describe('#fromArray', function(){
-    let bst = new bstNode(30);
-    bst.fromArray([29, 28, 31, 32]);
+    let bst = new BstNode(30);
+    BstNode.fromArray(bst, [29, 28, 31, 32]);
+
     it('should have insert into bst', () => {
       expect(bst.left.val).to.equal(29);
       expect(bst.right.val).to.equal(31);
     });
   });
   describe('#min', function() {
-    let bst = new bstNode(10);
+    let bst = new BstNode(10);
     it('should return min val', () => {
       bst.insert(3);
       expect(bst.min()).to.equal(3);
     });
   });
   describe('#max', function() {
-    let bst = new bstNode(14);
+    let bst = new BstNode(14);
     it('should return max val', () => {
       bst.insert(15);
       expect(bst.max()).to.equal(15);
     });
   });
   describe('#find', function(){
-    let bst = new bstNode(10);
-    bst.fromArray([15, 30, 15, 9, 7]);
+    let bst = new BstNode(10);
+    BstNode.fromArray(bst, [15, 30, 15, 9, 7]);
     it('should find the node', () => {
       expect(bst.find(30).val).to.equal(30);
     });
