@@ -27,9 +27,15 @@ bstNode.prototype.insert = function(val){
   return;
 };
 //O(n^2)
-bstNode.prototype.fromArray = function(array){
-  array.forEach(item => this.insert(item));
+bstNode.fromArray = function(node, array){
+  if (!array) return new Error('not unique');
+
+  for(let i = 0; i < array.length; i++){
+    node.insert(array[i]);
+  }
+  return node;
 };
+
 
 //O(n)
 bstNode.prototype.min = function(){
