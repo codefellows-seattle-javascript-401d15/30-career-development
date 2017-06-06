@@ -15,6 +15,7 @@ Prototypes:
 ## Install and Use Data Structure
 In terminal tab, enter:
 1. `npm install` to install application resources.
+2. `node index.js` to run 
 
 ## Access Methods
 
