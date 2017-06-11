@@ -1,7 +1,7 @@
 {
   "name": "lab-davidW",
   "version": "1.0.0",
-  "description": "## Usage",
+  "description": "Lab 30 Binary Search Tree",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -11,7 +11,7 @@
     "test": "mocha"
   },
   "keywords": [],
-  "author": "",
+  "author": "DavidGWheeler",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.0.1",

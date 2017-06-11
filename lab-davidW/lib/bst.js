@@ -8,34 +8,33 @@ const BstNode = module.exports = function(val) {
   this.right = null;
 };
 
-//O(n^2)
+//O(n log n) because it goes through the array's full lenght and then decides where to put it in a log n manner (by halves)
 BstNode.fromArray = function(node, array) {
-  if(!array) return null;
+  if(!array) return new Error('must be unique');
 
-  for(let i = 1; i < array.length; i++) {
-    let bst = new BstNode(array[0]);
+  for(let i = 0; i < array.length; i++) {
     node.insert(array[i]);
-    return
   }
+  return node;
 };
 
-//O(n)
+//O(log n)
 BstNode.prototype.min = function() {
   if(!this) return;
   if(this.left) {
-    return this.left.min()
+    return this.left.min();
   }
   return this.val;
-}
+};
 
-//O(n)
+//O(log n)
 BstNode.prototype.max = function() {
   if(!this) return;
   if(this.right) {
-    return this.right.max()
+    return this.right.max();
   }
   return this.val;
-}
+};
 
 //O(n)
 BstNode.prototype.insert = function(val) {
@@ -67,7 +66,7 @@ BstNode.prototype.contains = function(val) {
 };
 
 //this is find
-//O(n)
+//O(log n) I think this is o(log n) because It checks the value of a node, and moves left or right depending on if the value it is looking for is greater than or lesser than the current node's value.
 BstNode.prototype.lookup = function(val) {
   if(val < this.val) {
     if(!this.left) return null;
@@ -78,7 +77,7 @@ BstNode.prototype.lookup = function(val) {
   } else return this;
 };
 
-//O(log n)
+//O(n)
 BstNode.prototype.breadthFirst = function() {
   let q = [this];
   let result = '';
@@ -94,6 +93,7 @@ BstNode.prototype.breadthFirst = function() {
   return result;
 };
 
+// O(n)
 BstNode.prototype.preOrder = function(cb) {
   _walk(this);
   function _walk(node) {
@@ -103,6 +103,7 @@ BstNode.prototype.preOrder = function(cb) {
   }
 };
 
+// O(n)
 BstNode.prototype.postOrder = function(cb) {
   _walk(this);
   function _walk(node) {
@@ -112,27 +113,12 @@ BstNode.prototype.postOrder = function(cb) {
   }
 };
 
+// O(log n)
 BstNode.prototype.inOrder = function(cb) {
   _walk(this);
   function _walk(node) {
     if(node.left) _walk(node.left);
-    cb(node);
     if(node.right) _walk(node.right);
+    cb(node);
   }
-};
-
-BstNode.prototype.getDotInfo = function() {
-  let result = `digraph { `;
-
-  this.preOrder(node => {
-    if(!node) return;
-    if(node.left) result += `${node.val} -> ${node.left.val} `;
-    if(node.right) result += `${node.val} -> ${node.right.val} `;
-  });
-
-  return `${result};}`;
-};
-
-BstNode.prototype.treeify = function() {
-  return Viz(this.getDotInfo());
 };

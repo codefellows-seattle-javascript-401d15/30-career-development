@@ -10,6 +10,6 @@ bst.insert(99);
 bst.insert(5);
 
 let arr = [55, 1, 10, 11, 22, 20, 15];
-let arrNode - new BST();
+let arrNode = new BST();
 
 BST.fromArray(arr);
