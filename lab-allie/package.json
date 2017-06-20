@@ -1,0 +1,22 @@
+{
+  "name": "lab-allie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "chai": "^4.0.1",
+    "mocha": "^3.4.2",
+    "viz.js": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "MIT"
+}
