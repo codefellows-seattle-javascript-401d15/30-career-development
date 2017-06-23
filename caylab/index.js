@@ -1,0 +1,17 @@
+'use strict'
+let myArray = [3, 4, 7, 9, 1100]
+let BST = require('./bst.js')
+let bst = new BST(5)
+bst.insert(2)
+bst.insert(8)
+bst.insert(100)
+bst.insert(6)
+bst.insert(0)
+bst.insert(40)
+bst.insert(70)
+bst.insert(55)
+console.log(bst)
+console.log('new bstarray', BST.fromArray(myArray, bst))
+console.log('depth', bst.depth(bst), 'DEEP')
+console.log('min', bst.min(bst))
+console.log('max', bst.max(bst))
