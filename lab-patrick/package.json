@@ -1,0 +1,17 @@
+{
+  "name": "lab-patrick",
+  "version": "1.0.0",
+  "description": "Lab-30",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Patrick Sheridan",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "chai": "^4.0.1",
+    "mocha": "^3.4.2",
+    "viz.js": "^1.8.0"
+  }
+}
