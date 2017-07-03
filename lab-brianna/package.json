@@ -4,7 +4,7 @@
   "description": "This is a lab assignment for Code Fellow's Full-Stack JS course",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
