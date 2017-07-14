@@ -55,40 +55,34 @@ BstNode.prototype.totalSize = function() {
   }
 };
 
-//O(log n)
 let depths = [];
-BstNode.prototype.maxDepth = function(d, itt) {
+BstNode.prototype.depth = function(d, itt) {
   if(!this) return 0;
   if(!itt) itt = 1;
   if(!d) d = 1;
   let leftDepth = d;
   let rightDepth = d;
-  if(this.left) leftDepth = this.left.maxDepth(d+1);
-  if(this.right) rightDepth = this.right.maxDepth(d+1);
+  if(this.left) leftDepth = this.left.depth(d+1);
+  if(this.right) rightDepth = this.right.depth(d+1);
   if(!this.left && !this.right) {
     leftDepth >= rightDepth ? depths.push(leftDepth) : depths.push(rightDepth);
   }
-  return Math.max.apply(null, depths);
+  return depths;
+};
+
+
+//O(log n)
+BstNode.prototype.maxDepth = function() {
+  return Math.max.apply(null, this.depth());
 };
 //O(log n)
-BstNode.prototype.minDepth = function(d, itt) {
-  if(!this) return 0;
-  if(!itt) itt = 1;
-  if(!d) d = 1;
-  let leftDepth = d;
-  let rightDepth = d;
-  if(this.left) leftDepth = this.left.maxDepth(d+1);
-  if(this.right) rightDepth = this.right.maxDepth(d+1);
-  if(!this.left && !this.right) {
-    leftDepth >= rightDepth ? depths.push(leftDepth) : depths.push(rightDepth);
-  }
-  return Math.min.apply(null, depths);
+BstNode.prototype.minDepth = function() {
+  return Math.min.apply(null, this.depth());
 };
 
 //O(n)
 BstNode.prototype.fromArray = function(arr) {
   if(!arr) throw new Error('no array');
-  // let root = new BstNode(arr[0]);
   for(let i = 0; i < arr.length; i++) {
     this.insert(arr[i]);
   }
