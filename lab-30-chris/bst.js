@@ -234,8 +234,20 @@ bstNode.prototype.inOrder = function(cb) {
   }
 };
 
+// assuming all node vals are numbers
+// for string vals ...convert to ascii or something
+bstNode.prototype.sumOfAllNodeVals = function() {
+  let total;
+
+  this.preOrder(node => {
+    total += node.val;
+  });
+
+  return total;
+};
+
 bstNode.prototype.getDotInfo = function() {
-  let result = `digraph {`
+  let result = `digraph {`;
 
   this.preOrder(node => {
     if(!node) return;
